@@ -50,7 +50,7 @@ function getData(seconds) {
     for (s of stopMonitoring){
       let line;
       let approximityTest;
-      for (v of s.MonitoredStopVisit){
+      for (v of s.MonitoredStopVisit.slice(0,4)){
         let journey = v.MonitoredVehicleJourney;
         line = journey.PublishedLineName[0];
         approximityTest = journey.MonitoredCall.ArrivalProximityText;
