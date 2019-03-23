@@ -3,7 +3,8 @@
 function addBulletPoint(text) {
     var ul = document.getElementById('bustimes');
     var li = document.createElement("li");
-    li.appendChild(document.createTextNode(text));
+    li.innerHTML = text;
+    // li.appendChild(document.createTextNode(text));
     ul.appendChild(li);
 }
 
@@ -55,7 +56,7 @@ function getData(seconds) {
         line = journey.PublishedLineName[0];
         approximityTest = journey.MonitoredCall.ArrivalProximityText;
         let stopsAway = journey.MonitoredCall.NumberOfStopsAway;
-        let text = line + ' is ' + stopsAway + ' stops away';
+        let text = '<em class="busline">' + line + '</em>' + ' is ' + '<em class="stopsaway">' + stopsAway + ' stops</em> away';
         addBulletPoint(text);
       }
     }
