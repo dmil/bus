@@ -47,13 +47,15 @@ h3 {
 p {
     margin-bottom: 2rem;
     padding-top: 0.4rem;
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 300;
     line-height: 2.4rem
 }
 
 li {
-	padding-bottom: 1.5rem;
+	padding-bottom: 2rem;
+    font-size: 4rem;
+    line-height: 3rem
 }
 
 .stopsaway {
