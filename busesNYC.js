@@ -76,7 +76,8 @@
       OperatorRef: config.opRef,
       MonitoringRef: stopId,
       DirectionRef: direction, // 0 or 1
-      StopMonitoringDetailLevel: 'normal', // To get stop data after target stop, use 'calls' as value.
+      version: 2,
+      StopMonitoringDetailLevel: 'minimum', // To get stop data after target stop, use 'calls' as value.
       // MaximumNumberOfCallsOnwards:,
       // MaximumStopVisits:, // Upper bound
       // MinimumStopVisitsPerLine: // Lower bound
