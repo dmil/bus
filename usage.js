@@ -45,7 +45,7 @@ function getData(seconds) {
   var mta = new MtaBusTime(apiKey);
   var responseTime;
   $( "li" ).remove();
-  mta.monitorStop('400657', '1', function (stop) {
+  mta.monitorStop('405415', '1', function (stop) {
     responseTime = new Date(stop.Siri.ServiceDelivery.ResponseTimestamp);
     var stopMonitoring = stop.Siri.ServiceDelivery.StopMonitoringDelivery;
     for (s of stopMonitoring){
