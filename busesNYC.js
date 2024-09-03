@@ -12,8 +12,8 @@
 
   var MtaBusTime, config, url, searchUrl, vehicleMonitoringUrl;
 
-  url = "http://bustime.mta.info/api/siri/";
-  searchUrl = "http://bustime.mta.info/api/search";
+  url = "https://bustime.mta.info/api/siri/";
+  searchUrl = "https://bustime.mta.info/api/search";
 
   config = {
     key: "",
