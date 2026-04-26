@@ -55,17 +55,20 @@ function getData(seconds) {
   mta.monitorStop(stop.id, stop.direction, function (data) {
     responseTime = new Date(data.Siri.ServiceDelivery.ResponseTimestamp);
     var stopMonitoring = data.Siri.ServiceDelivery.StopMonitoringDelivery;
+    var found = false;
     for (s of stopMonitoring){
-      let line;
-      let approximityTest;
+      if (!s.MonitoredStopVisit) continue;
       for (v of s.MonitoredStopVisit.slice(0,4)){
+        found = true;
         let journey = v.MonitoredVehicleJourney;
-        line = journey.PublishedLineName[0];
-        approximityTest = journey.MonitoredCall.ArrivalProximityText;
+        let line = journey.PublishedLineName[0];
         let stopsAway = journey.MonitoredCall.NumberOfStopsAway;
         let text = '<em class="busline">' + line + '</em>' + ' is ' + '<em class="stopsaway">' + stopsAway + ' stops</em> away';
         addBulletPoint(text);
       }
+    }
+    if (!found) {
+      addBulletPoint('No buses currently scheduled.');
     }
   });
 }
