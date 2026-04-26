@@ -1,10 +1,16 @@
 /*global $, MtaBusTime */
 
+var stops = [
+  { id: '405415', direction: '1', label: '125th & Malcolm X (Westbound)' },
+  { id: '403147', direction: '0', label: '116th & Broadway (Eastbound)' }
+];
+
+var currentStopIndex = 0;
+
 function addBulletPoint(text) {
     var ul = document.getElementById('bustimes');
     var li = document.createElement("li");
     li.innerHTML = text;
-    // li.appendChild(document.createTextNode(text));
     ul.appendChild(li);
 }
 
@@ -43,11 +49,12 @@ function timeSince(date) {
 function getData(seconds) {
   var apiKey = "a4b4e4cf-8ee0-48d0-b63b-328f3c47aca5"; // <-- TODO: Bad Bad Bad! Fix.
   var mta = new MtaBusTime(apiKey);
+  var stop = stops[currentStopIndex];
   var responseTime;
   $( "li" ).remove();
-  mta.monitorStop('405415', '1', function (stop) {
-    responseTime = new Date(stop.Siri.ServiceDelivery.ResponseTimestamp);
-    var stopMonitoring = stop.Siri.ServiceDelivery.StopMonitoringDelivery;
+  mta.monitorStop(stop.id, stop.direction, function (data) {
+    responseTime = new Date(data.Siri.ServiceDelivery.ResponseTimestamp);
+    var stopMonitoring = data.Siri.ServiceDelivery.StopMonitoringDelivery;
     for (s of stopMonitoring){
       let line;
       let approximityTest;
@@ -77,6 +84,15 @@ function loop(seconds, iter, time) {
 
 
 $(function() {
+  $('#direction-toggle').on('click', function() {
+    currentStopIndex = 1 - currentStopIndex;
+    var current = stops[currentStopIndex];
+    var other = stops[1 - currentStopIndex];
+    $('#stop-title').text(current.label);
+    $('#direction-toggle').text('Switch to ' + other.label);
+    getData();
+  });
+
   getData();
   loop(30, 0, new Date());
 });
