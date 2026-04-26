@@ -65,7 +65,10 @@ function getData(seconds) {
         if (found >= 4) break;
         found++;
         let stopsAway = journey.MonitoredCall.NumberOfStopsAway;
-        let text = '<em class="busline">' + line + '</em>' + ' is ' + '<em class="stopsaway">' + stopsAway + ' stops</em> away';
+        let proximityText = journey.MonitoredCall.ArrivalProximityText;
+        let text = '<em class="busline">' + line + '</em>' + ' — ' +
+          '<em class="stopsaway">' + proximityText + '</em>' +
+          ' (' + stopsAway + ' stop' + (stopsAway === 1 ? '' : 's') + ' away)';
         addBulletPoint(text);
       }
     }
