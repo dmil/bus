@@ -95,14 +95,29 @@ function loop(seconds, iter, time) {
 };
 
 
+function applyStop(index) {
+  currentStopIndex = index;
+  var current = stops[currentStopIndex];
+  var other = stops[1 - currentStopIndex];
+  $('#stop-title').text(current.label);
+  $('#direction-toggle').text('Switch to ' + other.label);
+  window.location.hash = current.id;
+  getData();
+}
+
 $(function() {
-  $('#direction-toggle').on('click', function() {
-    currentStopIndex = 1 - currentStopIndex;
+  var hashId = window.location.hash.replace('#', '');
+  var initialIndex = stops.findIndex(function(s) { return s.id === hashId; });
+  if (initialIndex !== -1) {
+    currentStopIndex = initialIndex;
     var current = stops[currentStopIndex];
     var other = stops[1 - currentStopIndex];
     $('#stop-title').text(current.label);
     $('#direction-toggle').text('Switch to ' + other.label);
-    getData();
+  }
+
+  $('#direction-toggle').on('click', function() {
+    applyStop(1 - currentStopIndex);
   });
 
   getData();
