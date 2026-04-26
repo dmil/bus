@@ -2,7 +2,7 @@
 
 var stops = [
   { id: '405415', direction: '1', label: '125th & Malcolm X (Westbound)' },
-  { id: '403147', direction: '0', label: '116th & Broadway (Eastbound)' }
+  { id: '403122', direction: '0', label: '116th & Broadway (Eastbound)' }
 ];
 
 var currentStopIndex = 0;
