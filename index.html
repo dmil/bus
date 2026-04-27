@@ -1,5 +1,6 @@
 <html>
 <head>
+  <meta charset="utf-8">
   <title></title>
   <script src='libs/jquery.min.js'></script>
   <script src='busesNYC.js'></script>
@@ -8,7 +9,9 @@
 </head>
 <body>
   <div id='holster'>
-    <h1> 125th & Malcom X (WestBound)</h1>
+    <h1 id="stop-title">125th & Malcolm X (Westbound)</h1>
+    <button id="direction-toggle">Switch to 116th & Broadway (Eastbound)</button>
+    <div id="route-diagram"></div>
     <div id="timestamp"></div>
     <ul id="bustimes"></ul>
   </div>
