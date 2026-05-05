@@ -99,12 +99,20 @@ li {
 }
 
 @media (min-width: 600px) {
+    html {
+        font-size: 50%
+    }
+
     #holster {
         margin:4.8rem
     }
 }
 
 @media (min-width: 800px) {
+    html {
+        font-size: 43.75%
+    }
+
     #holster {
         margin:4.8rem auto 4.8rem auto;
         width: 800px;
